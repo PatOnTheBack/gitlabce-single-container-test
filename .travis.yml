@@ -1,0 +1,12 @@
+# Code copied from tutorials:
+# https://www.udemy.com/docker-and-kubernetes-the-complete-guide/
+
+sudo:         required
+service:
+  - docker
+
+pre_install:
+  - docker build -t gitlab/gitlab-ce -f Dockerfile.dev .
+
+script:
+  - docker run gitlab/gitlab-ce npm run test -- --coverage
