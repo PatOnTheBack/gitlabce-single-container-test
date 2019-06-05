@@ -1,6 +1,5 @@
 FROM gitlab/gitlab-ce
 
-RUN sudo apt-get install npm
 RUN npm install
 
 CMD ["npm", "run", "start"]
