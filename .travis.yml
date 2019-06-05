@@ -1,7 +1,7 @@
 # Code copied from tutorials:
 # https://www.udemy.com/docker-and-kubernetes-the-complete-guide/
 
-sudo:         required
+sudo:                required
 service:
   - docker
 
@@ -10,3 +10,16 @@ pre_install:
 
 script:
   - docker run gitlab/gitlab-ce npm run test -- --coverage
+
+deploy:
+  provider:          elasticbeanstalk
+  region:            $REGION
+  app:               "gitlabce-single-container-test"
+  env:               "GitlabceSingleContainerTest-env"
+  bucket_name:       $BUCKET_NAME
+  bucket_path:       "gitlabce-single-container-test"
+  on:
+    branch:          master
+  access_key_id:     $AWS_ACCESS_KEY
+  secret_access_key:
+    secure:          "$AWS_SECRET_KEY"
