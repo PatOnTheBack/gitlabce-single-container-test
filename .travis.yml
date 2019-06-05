@@ -6,6 +6,7 @@ service:
   - docker
 
 pre_install:
+  - sudo apt install -y npm
   - docker build -t gitlab/gitlab-ce -f Dockerfile.dev .
 
 script:
