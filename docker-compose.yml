@@ -1,12 +1,17 @@
 web:
+  # Use latest GitLab Community Edition Docker image.
   image:                   'gitlab/gitlab-ce:latest'
+  # Always restart if container goes down.
   restart:                 always
-  hostname:                'gitlab.example.com'
+  hostname:
+    environment:
+      - URL
   environment:
     GITLAB_OMNIBUS_CONFIG: |
-      external_url 'http://gitlab.example.com:80'
+      external_url '${URL}:80'
       gitlab_rails['gitlab_shell_ssh_port'] = 22
   ports:
+  # Open ports for HTTP and SSH.
     - '80:80'
     - '22:22'
   volumes:
