@@ -5,7 +5,7 @@ sudo:                required
 service:
   - docker
 
-pre_install:
+before_install:
   - docker build -t gitlab/gitlab-ce -f Dockerfile.dev .
 
 script:
