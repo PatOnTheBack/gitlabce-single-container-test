@@ -4,14 +4,9 @@
 sudo:                required
 service:
   - docker
-  - npm
 
 before_install:
 - docker build --tag gitlab/gitlab-ce --file Dockerfile.dev .
-
-script:
-  # `--` causes `npm run test` to exit automatically.
-  - docker run gitlab/gitlab-ce npm run test -- --coverage
 
 deploy:
   provider:          elasticbeanstalk
