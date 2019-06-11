@@ -20,6 +20,8 @@ deploy:
   # Lookup bucket name in the Amazon Elastic Beanstalk console.
   bucket_name:       $BUCKET_NAME
   bucket_path:       "gitlabce-single-container-test"
+  # Prevent `git stash --all`
+  skip_cleanup:      true
   # Travis CI should deploy from the master branch instead of testing.
   on:
     branch:          master
