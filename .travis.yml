@@ -9,9 +9,7 @@ pre_install:
   - docker build -t gitlab/gitlab-ce -f Dockerfile.dev .
 
 script:
-  # - docker run gitlab/gitlab-ce npm run test -- --coverage
-  # Trying after removing `--`.
-  - docker run gitlab/gitlab-ce npm run test --coverage
+  - docker run gitlab/gitlab-ce npm run test -- --coverage
 
 deploy:
   provider:          elasticbeanstalk
