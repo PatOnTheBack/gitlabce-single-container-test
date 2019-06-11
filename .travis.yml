@@ -6,9 +6,10 @@ service:
   - docker
 
 before_install:
-  - docker build -t gitlab/gitlab-ce -f Dockerfile.dev .
+- docker build --tag gitlab/gitlab-ce --file Dockerfile.dev .
 
 script:
+  # `--` causes `npm run test` to exit automatically.
   - docker run gitlab/gitlab-ce npm run test -- --coverage
 
 deploy:
