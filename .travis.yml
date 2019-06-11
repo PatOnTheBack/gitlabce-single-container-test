@@ -1,18 +1,14 @@
 # Code copied from tutorials:
 # https://www.udemy.com/docker-and-kubernetes-the-complete-guide/
 
+language:            bash
 sudo:                required
 service:
   - docker
 
-pre_install:
-  - sudo apt update
-  - sudo apt install -y npm
-  # For testing, Dockerfile.dev is used instead of Dockerfile.
-  - docker build --tag gitlab/gitlab-ce --file Dockerfile.dev .
-
-script:
-  - docker run gitlab/gitlab-ce npm run test -- --coverage
+before_install:
+# For testing, Dockerfile.dev is used instead of Dockerfile.
+- docker build --tag gitlab/gitlab-ce --file Dockerfile.dev .
 
 deploy:
   # Region, bucket name, and keys are stored in environmental variables.
