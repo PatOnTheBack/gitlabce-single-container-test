@@ -1,6 +1,7 @@
 # Code copied from tutorials:
 # https://www.udemy.com/docker-and-kubernetes-the-complete-guide/
 
+language:            bash
 sudo:                required
 service:
   - docker
