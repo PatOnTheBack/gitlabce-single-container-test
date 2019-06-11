@@ -8,18 +8,23 @@ service:
 pre_install:
   - sudo apt update
   - sudo apt install -y npm
-  - docker build -t gitlab/gitlab-ce -f Dockerfile.dev .
+  # For testing, Dockerfile.dev is used instead of Dockerfile.
+  - docker build -t gitlab/gitlab-ce -file Dockerfile.dev .
 
 script:
   - docker run gitlab/gitlab-ce npm run test -- --coverage
 
 deploy:
+  # Region, bucket name, and keys are stored in environmental variables.
   provider:          elasticbeanstalk
+  # Lookup region in the Amazon Elastic Beanstalk console.
   region:            $REGION
   app:               "gitlabce-single-container-test"
   env:               "GitlabceSingleContainerTest-env"
+  # Lookup bucket name in the Amazon Elastic Beanstalk console.
   bucket_name:       $BUCKET_NAME
   bucket_path:       "gitlabce-single-container-test"
+  # Travis CI should deploy from the master branch instead of testing.
   on:
     branch:          master
   access_key_id:     $AWS_ACCESS_KEY

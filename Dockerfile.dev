@@ -1,3 +1,4 @@
+# Use GitLab Community Edition Docker image.
 FROM gitlab/gitlab-ce
 
 RUN npm install
