@@ -1,7 +1,7 @@
 # Code modified from tutorials:
 # https://www.udemy.com/docker-and-kubernetes-the-complete-guide/
 
-language:            bash
+language:            generic
 sudo:                required
 service:
   - docker
