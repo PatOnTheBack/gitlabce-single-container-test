@@ -5,4 +5,4 @@ FROM gitlab/gitlab-ce
 EXPOSE 443 80 22
 
 # Start GitLab Process
-CMD ["gitlab-ctl","start"]
+# CMD ["gitlab-ctl","start"]
